@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "d2qMFEQyylMCubUyRuZKFtybIqoSOP7FQncF4jaMjOs=",
+  "Source": "PersonGenerator",
+  "BasePath": "_content/PersonGenerator",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
