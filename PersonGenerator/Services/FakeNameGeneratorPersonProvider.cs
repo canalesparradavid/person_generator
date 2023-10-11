@@ -11,18 +11,36 @@ namespace PersonGenerator.Services
 
             for (int i = 0; i < quantity; i++)
             {
-                personList.Add(Get());
+                Person? p = Get();
+                if(p != null)
+                    personList.Add(p);
             }
 
             return personList;
         }
 
-        public Person Get()
+        public Person? Get()
         {
             string url = "https://es.fakenamegenerator.com/";
             
             HtmlWeb web = new();
-            HtmlDocument doc = web.Load(url);
+            HtmlDocument doc;
+            try
+            {
+                doc = web.Load(url);
+            }
+            catch (Exception ex)
+            {
+                return null;
+
+            }
+
+            var titulo = doc.DocumentNode.SelectSingleNode("//title");
+
+            if (titulo == null || titulo.InnerHtml != "Generar un número aleatorio - Fake Name Generator")
+            {
+                return null;
+            }
             
             var fullName = GetFullName(doc);
             var residence = GetResidence(doc);
